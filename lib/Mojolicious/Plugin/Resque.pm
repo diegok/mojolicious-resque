@@ -5,14 +5,14 @@ use strict;
 
 #ABSTRACT: Mojolicious helper for sending jobs to a Resque queue.
 
-has config => sub {{}};
-has resque => sub { Resque->new(%{shift->config}) };
+has _config => sub {{}};
+has resque => sub { Resque->new(%{shift->_config}) };
 
 sub register {
     my ( $self, $app, $cfg ) = @_;
     $cfg ||= {};
     my $helper = delete $cfg->{helper} || 'resque';
-    $self->config($cfg);
+    $self->_config($cfg);
 
     $app->helper( $helper => sub { 
         my $c = shift;
