@@ -20,13 +20,13 @@ plugin 'resque', { redis => $redis };
 get '/push' => sub {
     my $self = shift;
     $self->resque( test_queue => { class => 'Test', args => [ 'test' ] } );
-    $self->render_text( 'done' );
+    $self->render( text => 'done' );
 };
 
 get '/pop' => sub {
     my $self = shift;
     my $job = $self->resque->pop('test_queue');
-    $self->render_text( $job->class );
+    $self->render( text => $job->class );
 };
 
 my $t = Test::Mojo->new;
