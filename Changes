@@ -1,5 +1,7 @@
 {{$NEXT}}
 
+    - Tests updated to mojo 4.x (Björn Pettersson)
+
 0.01      2012-09-15 14:55:38 Europe/Madrid
 
     - Kind of working, time to let users decide what it need to be helpful :-)
